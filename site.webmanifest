@@ -1,0 +1,14 @@
+{
+  "name": "Takaful.care",
+  "short_name": "Takaful.care",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1A3C5E",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
