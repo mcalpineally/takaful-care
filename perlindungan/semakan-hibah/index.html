@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  TAKAFUL.CARE — LANDING PAGE (Meta paid-ads traffic)
+  Offer: Semakan Penama & Hibah Percuma
+  Standalone: no site nav, no floating WhatsApp, one CTA path only.
+
+  UPLOAD TO:  public/perlindungan/semakan-hibah.html
+  LIVE URL :  https://takaful.care/perlindungan/semakan-hibah
+
+  BEFORE GOING LIVE — search for  >>> SWAP  (4 spots)
+  Brand colours are exact — taken from your compiled site CSS.
+  ============================================================================
+-->
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semakan Penama &amp; Hibah Takaful Percuma — Kedah &amp; Pulau Pinang | Takaful.care</title>
+<meta name="description" content="Sudahkah penama takaful anda betul? Semakan hibah percuma bersama ejen bertauliah di Sungai Petani. Pastikan wang manfaat sampai ke tangan keluarga tanpa tersekat proses pusaka.">
+<link rel="canonical" href="https://takaful.care/perlindungan/semakan-hibah">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#1A3C5E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Semakan Penama &amp; Hibah Takaful Percuma — Kedah &amp; Pulau Pinang">
+<meta property="og:description" content="Pastikan wang manfaat takaful sampai ke tangan keluarga anda, bukan tersekat dalam proses pusaka bertahun-tahun.">
+<meta property="og:image" content="https://takaful.care/images/misc/keluarga-muda-melayu-muslim-bersama-ejen-takaful-b.webp">
+<meta property="og:locale" content="ms_MY">
+
+<style>
+  /* Brand tokens — exact match to takaful.care compiled CSS.
+       primary-500   #1A3C5E   secondary-500 #1D9E75
+       primary-50    #EBF4FA   secondary-700 #0F6E56
+       secondary-50  #E1F5EE   secondary-100 #C4EBDD           */
+  :root{
+    --primary-500:#1A3C5E; --primary-700:#12293F; --primary-800:#0D1F2F;
+    --primary-100:#C8D6E3; --primary-200:#9DB3C7; --primary-50:#EBF4FA;
+    --secondary-500:#1D9E75; --secondary-600:#168666; --secondary-700:#0F6E56;
+    --secondary-100:#C4EBDD; --secondary-50:#E1F5EE;
+    --accent-500:#D9A441;
+    --surface:#F6F8FA; --border:#E3E8EF;
+    --text:#1F2A37; --text-muted:#5B6B7C;
+    --radius-card:12px; --radius-button:8px;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);color:var(--text);background:#fff;line-height:1.65;
+    -webkit-font-smoothing:antialiased;padding-bottom:78px;
+  }
+  @media(min-width:1024px){ body{padding-bottom:0} }
+  .container{max-width:820px;margin:0 auto;padding:0 20px}
+  .container-wide{max-width:1120px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.2;font-weight:700;color:var(--primary-500)}
+
+  .hero-tag{
+    display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;
+    color:var(--secondary-700);background:var(--secondary-50);
+    padding:6px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  .section-number{
+    display:block;font-size:.75rem;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--text-muted);
+  }
+
+  .btn-primary{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--secondary-500);color:#fff;font-weight:600;font-size:1.05rem;
+    padding:15px 30px;border:0;border-radius:var(--radius-button);cursor:pointer;
+    text-decoration:none;transition:background .18s ease;width:100%;font-family:var(--sans);
+  }
+  @media(min-width:600px){ .btn-primary{width:auto} }
+  .btn-primary:hover{background:var(--secondary-600)}
+  .btn-primary:focus-visible{outline:3px solid var(--accent-500);outline-offset:3px}
+
+  /* ---------------- HERO ---------------- */
+  .hero{background:#fff;padding:38px 0 44px}
+  .hero h1{font-size:clamp(1.8rem,5.4vw,2.9rem);margin-bottom:16px;max-width:19ch}
+  .hero .promise{
+    font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;color:var(--primary-500);
+    margin-bottom:14px;max-width:46ch;
+  }
+  .hero .body{color:var(--text-muted);font-size:1.03rem;margin-bottom:22px;max-width:54ch}
+  .microtrust{
+    display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;
+    font-size:.92rem;color:var(--text-muted);
+  }
+  .microtrust span{display:inline-flex;align-items:center;gap:7px}
+  .tick{width:17px;height:17px;flex:none;color:var(--secondary-500)}
+  .hero img{
+    width:100%;max-width:620px;margin-top:30px;border-radius:var(--radius-card);
+    border:1px solid var(--border);display:block;
+  }
+
+  /* ---------------- TRUST BAR ---------------- */
+  .trustbar{background:var(--primary-500);color:#fff;padding:16px 0}
+  .trustbar .row{
+    display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:10px 28px;font-size:.9rem;text-align:center;
+  }
+  .trustbar .row span{display:inline-flex;align-items:center;gap:7px;color:var(--primary-100)}
+  .trustbar b{color:#fff;font-weight:600}
+  .trustbar .ico{width:18px;height:18px;color:var(--secondary-500);flex:none}
+
+  /* ---------------- SECTIONS ---------------- */
+  section.block{padding:52px 0}
+  section.surface{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .block h2{font-size:clamp(1.5rem,4.2vw,2.15rem);margin:8px 0 14px;max-width:24ch}
+  .block .lead{color:var(--text-muted);font-size:1.05rem;margin-bottom:26px;max-width:56ch}
+
+  .checklist{list-style:none;display:grid;gap:14px;max-width:640px}
+  .checklist li{display:flex;gap:12px;font-size:1.02rem}
+  .checklist .tick{width:21px;height:21px;margin-top:3px}
+
+  .cards{display:grid;gap:16px}
+  @media(min-width:760px){ .cards{grid-template-columns:repeat(3,1fr)} }
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);padding:24px 22px}
+  .card h3{font-size:1.1rem;margin-bottom:8px}
+  .card p{color:var(--text-muted);font-size:.98rem}
+
+  .callout{
+    background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent-500);
+    border-radius:var(--radius-card);padding:26px 24px;
+  }
+  .callout p{color:var(--text);font-size:1.05rem;max-width:58ch}
+  .callout strong{color:var(--primary-500)}
+
+  /* ---------------- COMPARE TABLE ---------------- */
+  .compare{
+    width:100%;border-collapse:separate;border-spacing:0;margin-top:8px;
+    border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden;
+    font-size:.97rem;background:#fff;
+  }
+  .compare th,.compare td{padding:13px 14px;text-align:left;vertical-align:top}
+  .compare thead th{
+    background:var(--primary-500);color:#fff;font-weight:600;font-size:.9rem;
+  }
+  .compare tbody tr+tr td{border-top:1px solid var(--border)}
+  .compare td:first-child{font-weight:600;color:var(--primary-500);width:34%}
+  .compare td{color:var(--text-muted)}
+  @media(max-width:560px){
+    .compare th,.compare td{padding:11px 10px;font-size:.9rem}
+    .compare td:first-child{width:30%}
+  }
+
+  /* ---------------- FORM ---------------- */
+  .formsec{background:var(--primary-500);padding:52px 0 58px}
+  .formcard{
+    background:#fff;border-radius:var(--radius-card);max-width:540px;margin:0 auto;
+    padding:32px 26px;box-shadow:0 20px 40px -22px rgba(0,0,0,.5);
+  }
+  @media(min-width:600px){ .formcard{padding:38px 36px} }
+  .formcard h2{font-size:clamp(1.4rem,3.6vw,1.85rem);margin-bottom:8px}
+  .formcard .fdesc{color:var(--text-muted);margin-bottom:22px;font-size:.99rem}
+  .field{margin-bottom:15px}
+  .field label{display:block;font-weight:600;font-size:.93rem;margin-bottom:6px;color:var(--text)}
+  .field input,.field select{
+    width:100%;padding:13px 13px;font-size:1rem;font-family:var(--sans);color:var(--text);
+    border:1.5px solid var(--border);border-radius:var(--radius-button);background:#fff;
+  }
+  .field input:focus,.field select:focus{
+    outline:0;border-color:var(--secondary-500);box-shadow:0 0 0 3px rgba(29,158,117,.18);
+  }
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .formnote{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--text-muted);margin-top:15px}
+  .consent{font-size:.8rem;color:var(--text-muted);margin-top:13px;line-height:1.55}
+  #formError{color:#B42318;font-size:.9rem;margin-top:10px;display:none}
+
+  /* ---------------- FOOTER ---------------- */
+  footer{background:var(--primary-800);color:var(--primary-200);padding:32px 0 38px;font-size:.84rem}
+  footer .container{display:grid;gap:12px}
+  footer .brand{color:#fff;font-weight:700;font-size:1.1rem}
+  footer .disc{max-width:72ch;line-height:1.6}
+  footer a{color:var(--primary-100)}
+
+  /* ---------------- MOBILE STICKY CTA ---------------- */
+  .sticky{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(18,41,63,.97);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -6px 20px -10px rgba(0,0,0,.6);
+  }
+  .sticky a{
+    display:flex;align-items:center;justify-content:center;background:var(--secondary-500);
+    color:#fff;font-weight:600;font-size:1.02rem;padding:14px;border-radius:var(--radius-button);
+    text-decoration:none;
+  }
+  @media(min-width:1024px){ .sticky{display:none} }
+
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="container">
+    <span class="hero-tag">Ejen Takaful Bertauliah · Sungai Petani · Kedah &amp; Pulau Pinang</span>
+    <h1>Kalau anda tiada esok, berapa lama keluarga anda kena tunggu untuk dapat wang?</h1>
+    <p class="promise">Ramai yang ada sijil takaful. Jauh lebih sedikit yang penamanya betul-betul disusun.</p>
+    <p class="body">
+      Semakan penama dan hibah secara percuma. Saya semak siapa penama anda sekarang,
+      sama ada ia disusun sebagai hibah, dan apa yang akan berlaku kepada wang manfaat
+      itu jika anda tiada. Tiada jualan — cuma kepastian.
+    </p>
+
+    <a class="btn-primary" href="#borang">Semak Penama Saya — Percuma</a>
+
+    <div class="microtrust">
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Percuma sepenuhnya</span>
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Untuk sijil mana-mana syarikat</span>
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Respon dalam 24 jam</span>
+    </div>
+
+    <img src="/images/misc/keluarga-muda-melayu-muslim-bersama-ejen-takaful-b.webp"
+         alt="Keluarga muda berbincang dengan ejen takaful tentang penama dan hibah takaful di Sungai Petani"
+         width="1200" height="800" loading="eager" fetchpriority="high">
+  </div>
+</header>
+
+<!-- ================= TRUST BAR ================= -->
+<div class="trustbar">
+  <div class="container-wide">
+    <div class="row">
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg><b>PruBSN</b></span>
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Dikawal selia <b>Bank Negara Malaysia</b></span>
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Dilindungi <b>PIDM</b></span>
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Lesen ejen boleh disemak</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 1. IS THIS FOR ME? ================= -->
+<section class="block">
+  <div class="container">
+    <span class="section-number">01 / Untuk siapa</span>
+    <h2>Untuk anda yang sudah ada sijil — tapi tak pernah semak penamanya.</h2>
+    <p class="lead">Semakan ini paling berguna kalau salah satu daripada ini terasa seperti anda:</p>
+    <ul class="checklist">
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda ada sijil takaful, tapi tak ingat siapa yang anda letak sebagai penama.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda tak pasti perbezaan antara penama sebagai <em>wasi</em> dan penama secara hibah.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Keadaan keluarga anda berubah — berkahwin, ada anak, bercerai, atau penama sudah meninggal.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda ada wasiat, dan anda anggap itu sudah cukup untuk wang takaful.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 2. WHY NOW ================= -->
+<section class="block surface">
+  <div class="container">
+    <span class="section-number">02 / Kenapa ia penting</span>
+    <h2>Masalahnya bukan jumlah wang. Masalahnya masa.</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Bil tidak tunggu proses pusaka</h3>
+        <p>Sewa, ansuran rumah, yuran sekolah dan belanja dapur berterusan setiap bulan — walaupun akaun bank belum boleh disentuh.</p>
+      </div>
+      <div class="card">
+        <h3>Tanpa hibah, wang masuk ke harta pusaka</h3>
+        <p>Ia terpaksa melalui pembahagian pusaka bersama waris lain, mengikut proses yang boleh mengambil masa bertahun-tahun.</p>
+      </div>
+      <div class="card">
+        <h3>Penama sahaja belum tentu memadai</h3>
+        <p>Dalam banyak kes, penama hanya bertindak sebagai wasi yang menerima dan mengagihkan wang — bukan pemilik mutlaknya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. WASIAT vs HIBAH ================= -->
+<section class="block">
+  <div class="container">
+    <span class="section-number">03 / Salah faham yang paling biasa</span>
+    <h2>"Saya dah buat wasiat — cukuplah, kan?"</h2>
+    <p class="lead">Wasiat dan hibah takaful bukan benda yang sama, dan satu tidak menggantikan satu lagi.</p>
+    <table class="compare">
+      <thead>
+        <tr><th>&nbsp;</th><th>Wasiat</th><th>Hibah takaful</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Apa yang diurus</td>
+          <td>Harta fizikal — rumah, tanah, kenderaan, perniagaan</td>
+          <td>Wang manfaat sijil takaful sahaja</td>
+        </tr>
+        <tr>
+          <td>Melalui</td>
+          <td>Proses pusaka dan mahkamah</td>
+          <td>Terus kepada penerima hibah yang anda tetapkan</td>
+        </tr>
+        <tr>
+          <td>Kelajuan</td>
+          <td>Perlahan — bergantung kepada proses pusaka</td>
+          <td>Jauh lebih pantas selepas dokumen lengkap</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:22px;margin-bottom:0">
+      Ramai yang ada satu tetapi terlepas satu lagi. Semakan ini menunjukkan yang mana anda sudah ada.
+    </p>
+  </div>
+</section>
+
+<!-- ================= 4. WHAT IF NOTHING ================= -->
+<section class="block surface">
+  <div class="container">
+    <span class="section-number">04 / Kalau tak buat apa-apa</span>
+    <h2>Anda tidak akan tahu ia salah. Keluarga anda yang akan tahu.</h2>
+    <div class="callout">
+      <p>
+        <strong>Kesilapan penama tidak muncul semasa anda hidup.</strong> Ia hanya muncul pada
+        saat keluarga anda paling lemah — ketika mereka sedang berkabung dan sedang perlukan
+        wang itu. Semakan ini mengambil masa beberapa minit sahaja, dan ia percuma.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. WHAT YOU GET ================= -->
+<section class="block">
+  <div class="container">
+    <span class="section-number">05 / Apa yang saya semak</span>
+    <h2>Satu semakan. Empat perkara.</h2>
+    <ul class="checklist">
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Siapa penama anda sekarang, dan sama ada maklumat itu masih terkini.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Sama ada penamaan itu disusun secara hibah atau sebagai wasi sahaja.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Apa yang akan berlaku kepada wang manfaat itu berdasarkan susunan semasa anda.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Langkah yang perlu diambil untuk membetulkannya — termasuk borang yang berkaitan.</li>
+    </ul>
+
+    <p class="lead" style="margin-top:26px;margin-bottom:0">
+      Semakan boleh dibuat melalui WhatsApp, panggilan video, atau jumpa terus di Sungai Petani,
+      Kulim, atau Pulau Pinang. Saya boleh semak sijil daripada mana-mana syarikat takaful —
+      bukan PruBSN sahaja.
+    </p>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<section class="formsec" id="borang">
+  <div class="container">
+    <div class="formcard">
+      <h2>Semak penama anda — percuma</h2>
+      <p class="fdesc">Isi butiran ringkas di bawah. Saya akan hubungi anda melalui WhatsApp dalam masa 24 jam. Anda tidak perlu hantar apa-apa dokumen sekarang.</p>
+
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="nama">Nama penuh</label>
+          <input id="nama" name="nama" type="text" autocomplete="name" required placeholder="Cth: Ahmad bin Ismail">
+        </div>
+        <div class="field">
+          <label for="telefon">No. telefon (WhatsApp)</label>
+          <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Cth: 012-345 6789">
+        </div>
+        <div class="field">
+          <label for="emel">Emel</label>
+          <input id="emel" name="emel" type="email" autocomplete="email" required placeholder="nama@email.com">
+        </div>
+        <div class="field">
+          <label for="status_penama">Adakah anda sudah daftarkan penama untuk sijil takaful anda?</label>
+          <select id="status_penama" name="status_penama" required>
+            <option value="" disabled selected>Pilih satu…</option>
+            <option value="Sudah - tahu susunannya">Sudah, dan saya tahu susunannya</option>
+            <option value="Sudah - tak pasti susunannya">Sudah, tapi saya tak pasti susunannya</option>
+            <option value="Belum daftar penama">Belum daftar penama</option>
+            <option value="Tiada sijil takaful lagi">Saya belum ada sijil takaful</option>
+          </select>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label>Jangan isi ruang ini<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%">Hantar &amp; Semak Penama Saya</button>
+        <p id="formError"></p>
+
+        <div class="formnote">
+          <svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Saya hubungi anda dalam masa 24 jam. Tiada spam, tiada panggilan berulang.
+        </div>
+        <p class="consent">
+          Dengan menghantar, anda bersetuju untuk dihubungi berkenaan semakan ini.
+          Butiran anda tidak dikongsi dengan pihak ketiga.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="brand">Takaful.care</div>
+    <!-- >>> SWAP #1 — your PruBSN licence number -->
+    <div>Alpian Ali · Ejen Takaful Bertauliah PruBSN · No. Lesen: XXXXXXX</div>
+    <div>Sungai Petani, Kedah · admin@takaful.care</div>
+    <p class="disc">
+      Maklumat di halaman ini adalah panduan umum untuk tujuan pendidikan dan bukan nasihat
+      kewangan, perundangan atau syarak. Susunan penama, hibah dan pembahagian pusaka tertakluk
+      kepada undang-undang yang berkuat kuasa serta terma dokumen rasmi sijil takaful anda.
+      Semakan disediakan secara percuma tanpa komitmen. PruBSN dikawal selia oleh Bank Negara
+      Malaysia dan manfaat takaful dilindungi oleh PIDM tertakluk kepada terma yang berkenaan.
+    </p>
+    <p><a href="/polisi-privasi/">Polisi Privasi</a> · <a href="/terma-perkhidmatan/">Terma Perkhidmatan</a></p>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY CTA ================= -->
+<div class="sticky">
+  <a href="#borang">Semak Penama Saya — Percuma</a>
+</div>
+
+<!-- ================= META PIXEL ================= -->
+<script>
+/* >>> SWAP #2 — replace YOUR_PIXEL_ID with your Meta Pixel ID (same one across all pages). */
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','YOUR_PIXEL_ID');
+fbq('track','PageView');
+</script>
+
+<!-- ================= FORM → GHL WEBHOOK ================= -->
+<script>
+  /* >>> SWAP #3 — your GoHighLevel inbound webhook URL */
+  var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
+  /* >>> SWAP #4 — thank-you page path */
+  var THANK_YOU_URL   = "/terima-kasih";
+
+  (function () {
+    var form = document.getElementById('leadForm');
+    var btn  = document.getElementById('submitBtn');
+    var err  = document.getElementById('formError');
+    if (!form) return;
+
+    var qp = new URLSearchParams(window.location.search);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.style.display = 'none';
+
+      if (form.company && form.company.value.trim() !== '') return; // honeypot
+
+      var nama = form.nama.value.trim();
+      var telefon = form.telefon.value.trim();
+      var emel = form.emel.value.trim();
+      var statusPenama = form.status_penama.value;
+
+      if (!nama || !telefon || !emel || !statusPenama) {
+        err.textContent = 'Sila lengkapkan semua ruang.';
+        err.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Menghantar…';
+
+      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+
+      var payload = new URLSearchParams({
+        nama: nama,
+        telefon: telefon,
+        emel: emel,
+        status_penama: statusPenama,
+        offer: 'semakan-hibah',
+        source: 'takaful.care-lp',
+        page_url: window.location.href,
+        utm_source: qp.get('utm_source') || '',
+        utm_medium: qp.get('utm_medium') || '',
+        utm_campaign: qp.get('utm_campaign') || '',
+        fbclid: qp.get('fbclid') || ''
+      });
+
+      fetch(GHL_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString()
+      })
+      .then(function(){ window.location.href = THANK_YOU_URL; })
+      .catch(function(){ window.location.href = THANK_YOU_URL; });
+
+      setTimeout(function(){ window.location.href = THANK_YOU_URL; }, 4000);
+    });
+  })();
+</script>
+
+</body>
+</html>
