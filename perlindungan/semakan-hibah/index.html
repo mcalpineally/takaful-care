@@ -367,7 +367,7 @@
             <option value="Tiada sijil takaful lagi">Saya belum ada sijil takaful</option>
           </select>
         </div>
-
+        <input type="hidden" name="offer" value="semakan-hibah">
         <div class="hp" aria-hidden="true">
           <label>Jangan isi ruang ini<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -392,14 +392,14 @@
 <footer>
   <div class="container">
     <div class="brand">Takaful.care</div>
-    <!-- >>> SWAP #1 — your PruBSN licence number -->
-    <div>Alpian Ali · Ejen Takaful Bertauliah PruBSN · No. Lesen: XXXXXXX</div>
-    <div>Sungai Petani, Kedah · admin@takaful.care</div>
+    <!-- >>> SWAP #1 — your Takaful licence number -->
+    <div>Alpian Ali · Ejen Takaful Bertauliah</div>
+    <div>Sungai Petani, Kedah · alpian@takaful.care</div>
     <p class="disc">
       Maklumat di halaman ini adalah panduan umum untuk tujuan pendidikan dan bukan nasihat
       kewangan, perundangan atau syarak. Susunan penama, hibah dan pembahagian pusaka tertakluk
       kepada undang-undang yang berkuat kuasa serta terma dokumen rasmi sijil takaful anda.
-      Semakan disediakan secara percuma tanpa komitmen. PruBSN dikawal selia oleh Bank Negara
+      Semakan disediakan secara percuma tanpa komitmen. Syarikat takaful dikawal selia oleh Bank Negara
       Malaysia dan manfaat takaful dilindungi oleh PIDM tertakluk kepada terma yang berkenaan.
     </p>
     <p><a href="/polisi-privasi/">Polisi Privasi</a> · <a href="/terma-perkhidmatan/">Terma Perkhidmatan</a></p>
@@ -424,69 +424,7 @@ fbq('track','PageView');
 </script>
 
 <!-- ================= FORM → GHL WEBHOOK ================= -->
-<script>
-  /* >>> SWAP #3 — your GoHighLevel inbound webhook URL */
-  var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
-  /* >>> SWAP #4 — thank-you page path */
-  var THANK_YOU_URL   = "/terima-kasih";
-
-  (function () {
-    var form = document.getElementById('leadForm');
-    var btn  = document.getElementById('submitBtn');
-    var err  = document.getElementById('formError');
-    if (!form) return;
-
-    var qp = new URLSearchParams(window.location.search);
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      err.style.display = 'none';
-
-      if (form.company && form.company.value.trim() !== '') return; // honeypot
-
-      var nama = form.nama.value.trim();
-      var telefon = form.telefon.value.trim();
-      var emel = form.emel.value.trim();
-      var statusPenama = form.status_penama.value;
-
-      if (!nama || !telefon || !emel || !statusPenama) {
-        err.textContent = 'Sila lengkapkan semua ruang.';
-        err.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Menghantar…';
-
-      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-
-      var payload = new URLSearchParams({
-        nama: nama,
-        telefon: telefon,
-        emel: emel,
-        status_penama: statusPenama,
-        offer: 'semakan-hibah',
-        source: 'takaful.care-lp',
-        page_url: window.location.href,
-        utm_source: qp.get('utm_source') || '',
-        utm_medium: qp.get('utm_medium') || '',
-        utm_campaign: qp.get('utm_campaign') || '',
-        fbclid: qp.get('fbclid') || ''
-      });
-
-      fetch(GHL_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload.toString()
-      })
-      .then(function(){ window.location.href = THANK_YOU_URL; })
-      .catch(function(){ window.location.href = THANK_YOU_URL; });
-
-      setTimeout(function(){ window.location.href = THANK_YOU_URL; }, 4000);
-    });
-  })();
-</script>
+<script src="/js/lead-capture.js?v=5" defer></script>
 
 </body>
 </html>
