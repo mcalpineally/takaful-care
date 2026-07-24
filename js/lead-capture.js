@@ -28,7 +28,7 @@
   "use strict";
 
   /* ---- PASTE YOUR SAVED GHL WEBHOOK URL HERE -------------------------- */
-  var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
+  var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/xsyaGwI7Qtc8BigBxu9E/webhook-trigger/4712bb69-509c-4313-a11c-09ed5736ad14";
   /* --------------------------------------------------------------------- */
 
   var THANK_YOU_URL = "/terima-kasih";
