@@ -24,7 +24,7 @@
   "use strict";
 
   /* ---- SWAP THIS ------------------------------------------------------ */
-  var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/xsyaGwI7Qtc8BigBxu9E/webhook-trigger/b6a49973-03e3-4b2e-8229-1a79aa0c1d16";
+  var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/xsyaGwI7Qtc8BigBxu9E/webhook-trigger/ce95454a-5115-4ad9-a0ca-25ebd4a3a916";
   /* --------------------------------------------------------------------- */
 
   var THANK_YOU_URL = "/terima-kasih";
