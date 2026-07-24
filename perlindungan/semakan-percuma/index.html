@@ -342,7 +342,7 @@
             <option value="Belum pasti">Belum pasti — nak dengar dulu</option>
           </select>
         </div>
-
+        <input type="hidden" name="offer" value="semakan-percuma">
         <div class="hp" aria-hidden="true">
           <label>Jangan isi ruang ini<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -368,7 +368,7 @@
   <div class="container">
     <div class="brand">Takaful.care</div>
     <!-- >>> SWAP #1 — your PruBSN licence number -->
-    <div>Alpian Ali · Ejen Takaful Bertauliah PruBSN · No. Lesen: XXXXXXX</div>
+    <div>Alpian Ali · Ejen Takaful Bertauliah</div>
     <div>Sungai Petani, Kedah · admin@takaful.care</div>
     <p class="disc">
       Maklumat di halaman ini adalah panduan umum untuk tujuan pendidikan dan bukan nasihat
@@ -383,7 +383,7 @@
 
 <!-- ================= MOBILE STICKY CTA ================= -->
 <div class="sticky">
-  <a href="#borang">Mula Rundingan Percuma — Percuma</a>
+  <a href="#borang">Mula Rundingan — Percuma</a>
 </div>
 
 <!-- ================= META PIXEL ================= -->
@@ -400,71 +400,7 @@ fbq('track','PageView');
 </script>
 
 <!-- ================= FORM → GHL WEBHOOK ================= -->
-<script>
-  /* >>> SWAP #3 — your GoHighLevel inbound webhook URL */
-  var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
-  /* >>> SWAP #4 — thank-you page path (create it too) */
-  var THANK_YOU_URL   = "/terima-kasih";
-
-  (function () {
-    var form = document.getElementById('leadForm');
-    var btn  = document.getElementById('submitBtn');
-    var err  = document.getElementById('formError');
-    if (!form) return;
-
-    var qp = new URLSearchParams(window.location.search);
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      err.style.display = 'none';
-
-      if (form.company && form.company.value.trim() !== '') return; // honeypot
-
-      var nama = form.nama.value.trim();
-      var telefon = form.telefon.value.trim();
-      var emel = form.emel.value.trim();
-      var keperluan = form.keperluan.value;
-
-      if (!nama || !telefon || !emel || !keperluan) {
-        err.textContent = 'Sila lengkapkan semua ruang.';
-        err.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Menghantar…';
-
-      // tell Meta a lead converted
-      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-
-      var payload = new URLSearchParams({
-        nama: nama,
-        telefon: telefon,
-        emel: emel,
-        keperluan: keperluan,
-        offer: 'semakan-percuma',
-        source: 'takaful.care-lp',
-        page_url: window.location.href,
-        utm_source: qp.get('utm_source') || '',
-        utm_medium: qp.get('utm_medium') || '',
-        utm_campaign: qp.get('utm_campaign') || '',
-        fbclid: qp.get('fbclid') || ''
-      });
-
-      // form-urlencoded + no-cors = simple request, never blocked by CORS
-      fetch(GHL_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload.toString()
-      })
-      .then(function(){ window.location.href = THANK_YOU_URL; })
-      .catch(function(){ window.location.href = THANK_YOU_URL; });
-
-      setTimeout(function(){ window.location.href = THANK_YOU_URL; }, 4000);
-    });
-  })();
-</script>
+<script src="/js/lead-capture.js?v=5" defer></script>
 
 </body>
 </html>
