@@ -1,20 +1,24 @@
 /*
   ==========================================================================
-  TAKAFUL.CARE — UNIVERSAL LEAD CAPTURE
-  Wires EVERY form on the site to GoHighLevel without rebuilding any form.
+  TAKAFUL.CARE — LEAD CAPTURE (v3)
 
-  UPLOAD TO:  public/js/lead-capture.js
+  GOAL: leads go to GoHighLevel, not to the site builder's endpoint.
 
-  THEN add this one line to your base layout, just before </body>:
+  HOW IT BEHAVES
+  - GHL URL still a placeholder  -> script does nothing at all. The form
+    submits to whatever its action says (the LocusPilot builder endpoint),
+    exactly as it did before. Nothing breaks, no lead is lost.
+  - GHL URL filled in            -> script takes over: sends the lead to
+    GHL, stops the builder submission, and redirects to /terima-kasih.
+
+  So the switchover is a single paste. Nothing else to change, and there
+  is never a window where leads fall through a gap.
+
+  UPLOAD TO:  js/lead-capture.js   (repo root — replaces the old file)
+
+  Already referenced by:
       <script src="/js/lead-capture.js" defer></script>
-
-  Your base layout is the .astro file that renders the site header and
-  footer — usually src/layouts/BaseLayout.astro or Layout.astro. Adding it
-  there covers dapatkan-sebut-harga, hubungi-kami, and every future page
-  in one edit.
-
-  NOTE: files in public/ (your ad landing pages) do NOT use the Astro
-  layout, so they keep their own inline script. No conflict, no double-send.
+  in hubungi-kami/index.html and dapatkan-sebut-harga/index.html
 
   TO EXCLUDE a form:  add  data-ghl="off"  to the <form> tag.
   ==========================================================================
@@ -23,17 +27,24 @@
 (function () {
   "use strict";
 
-  /* ---- SWAP THIS ------------------------------------------------------ */
-  var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/xsyaGwI7Qtc8BigBxu9E/webhook-trigger/1d94f247-3769-449a-96af-e363d5262307";
+  /* ---- PASTE YOUR SAVED GHL WEBHOOK URL HERE -------------------------- */
+  var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
   /* --------------------------------------------------------------------- */
 
   var THANK_YOU_URL = "/terima-kasih";
-  var REDIRECT_AFTER_SUBMIT = true;   // false = show inline success instead
 
-  // Maps URL path -> the source value sent to GHL.
+  // Until a real URL is pasted above, this script stays completely inert.
+  var CONFIGURED =
+    GHL_WEBHOOK_URL.indexOf("http") === 0 &&
+    GHL_WEBHOOK_URL.indexOf("PASTE_") === -1;
+
+  if (!CONFIGURED) return;   // <- forms keep working via their own action
+
+  var HONEYPOTS = ["company", "_website_url", "website_url"];
+
   function sourceFromPath() {
     var p = window.location.pathname.replace(/\/+$/, "");
-    if (!p || p === "") return "homepage";
+    if (!p) return "homepage";
     return p.replace(/^\//, "").replace(/\//g, "-");
   }
 
@@ -46,10 +57,13 @@
       var name = el.name || el.id;
       if (!name) continue;
       if (el.type === "submit" || el.type === "button") continue;
+      if (name.charAt(0) === "_") continue;        // skip _next, _website_url
 
       if (el.type === "checkbox") {
         if (el.checked) {
-          data[name] = data[name] ? data[name] + ", " + (el.value || "Ya") : (el.value || "Ya");
+          data[name] = data[name]
+            ? data[name] + ", " + (el.value || "Ya")
+            : (el.value || "Ya");
         }
         continue;
       }
@@ -63,34 +77,57 @@
     return data;
   }
 
-  // Finds the first field whose name/id looks like a phone number.
-  function looksLikePhone(data) {
+  function isBot(form) {
+    for (var i = 0; i < HONEYPOTS.length; i++) {
+      var f = form.querySelector('[name="' + HONEYPOTS[i] + '"]');
+      if (f && f.value && f.value.trim() !== "") return true;
+    }
+    return false;
+  }
+
+  // Malaysian numbers -> E.164, the format GHL and WhatsApp accept.
+  //   012-345 6789 -> +60123456789
+  function normalisePhone(raw) {
+    if (!raw) return "";
+    var s = String(raw).replace(/[^\d+]/g, "");
+    if (s.indexOf("+") === 0) return s;
+    s = s.replace(/\D/g, "");
+    if (s.indexOf("60") === 0) return "+" + s;
+    if (s.indexOf("0") === 0) return "+6" + s;
+    if (s.length >= 9) return "+60" + s;
+    return raw;
+  }
+
+  function findByPattern(data, re) {
     var keys = Object.keys(data);
     for (var i = 0; i < keys.length; i++) {
-      if (/(phone|tel|wasap|whatsapp|nombor)/i.test(keys[i])) return data[keys[i]];
+      if (re.test(keys[i])) return data[keys[i]];
     }
     return "";
   }
 
-  function looksLikeName(data) {
-    var keys = Object.keys(data);
-    for (var i = 0; i < keys.length; i++) {
-      if (/(^nama|name)/i.test(keys[i])) return data[keys[i]];
-    }
-    return "";
-  }
+  function sendToGHL(data) {
+    var body = new URLSearchParams(data).toString();
 
-  function showInlineSuccess(form) {
-    var box = document.createElement("div");
-    box.setAttribute("role", "status");
-    box.style.cssText =
-      "background:#E1F5EE;border:1px solid #C4EBDD;border-radius:12px;" +
-      "padding:18px 20px;color:#0F6E56;font-weight:600;margin-top:12px;";
-    box.textContent =
-      "Terima kasih — permohonan anda diterima. Saya akan hubungi anda melalui WhatsApp dalam masa 24 jam.";
-    form.parentNode.insertBefore(box, form.nextSibling);
-    form.style.display = "none";
-    box.scrollIntoView({ behavior: "smooth", block: "center" });
+    // sendBeacon is built for this: fire-and-forget, survives navigation.
+    try {
+      if (navigator.sendBeacon) {
+        var blob = new Blob([body], {
+          type: "application/x-www-form-urlencoded"
+        });
+        if (navigator.sendBeacon(GHL_WEBHOOK_URL, blob)) return;
+      }
+    } catch (e) { /* fall through */ }
+
+    try {
+      fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body
+      });
+    } catch (e) { /* never block the user */ }
   }
 
   function bind(form) {
@@ -99,61 +136,54 @@
     form.setAttribute("data-ghl-bound", "1");
 
     form.addEventListener("submit", function (e) {
-      e.preventDefault();
+      if (isBot(form)) { e.preventDefault(); return; }
 
       var data = collect(form);
 
-      // honeypot: any field literally named "company" left filled = bot
-      if (data.company) return;
-
-      var nama = looksLikeName(data);
-      var fon = looksLikePhone(data);
+      var nama = findByPattern(data, /(^nama|^name|full_?name)/i);
+      var fon  = findByPattern(data, /(phone|tel|wasap|whatsapp|nombor)/i);
+      var mel  = findByPattern(data, /(emel|email|e-?mail)/i);
 
       if (!nama || !fon) {
+        e.preventDefault();
         alert("Sila lengkapkan nama dan nombor telefon anda.");
         return;
       }
 
-      var btn = form.querySelector('[type="submit"], button');
-      var original = "";
-      if (btn) {
-        original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = "Menghantar…";
-      }
+      // We are handling this lead — stop the builder endpoint receiving it.
+      e.preventDefault();
+
+      var payload = {};
+      for (var k in data) { if (data.hasOwnProperty(k)) payload[k] = data[k]; }
+
+      payload.nama = nama;
+      payload.telefon = normalisePhone(fon);
+      payload.emel = mel;
+      payload.source = sourceFromPath();
+      payload.page_url = window.location.href;
 
       var qp = new URLSearchParams(window.location.search);
-      data.source = sourceFromPath();
-      data.page_url = window.location.href;
-      data.utm_source = qp.get("utm_source") || "";
-      data.utm_medium = qp.get("utm_medium") || "";
-      data.utm_campaign = qp.get("utm_campaign") || "";
-      data.fbclid = qp.get("fbclid") || "";
+      payload.utm_source = qp.get("utm_source") || "";
+      payload.utm_medium = qp.get("utm_medium") || "";
+      payload.utm_campaign = qp.get("utm_campaign") || "";
+      payload.fbclid = qp.get("fbclid") || "";
 
-      if (typeof fbq === "function") { fbq("track", "Lead"); }
-
-      var payload = new URLSearchParams(data).toString();
-
-      var done = function () {
-        if (REDIRECT_AFTER_SUBMIT) {
-          window.location.href = THANK_YOU_URL;
-        } else {
-          if (btn) { btn.disabled = false; btn.textContent = original; }
-          showInlineSuccess(form);
-        }
-      };
-
-      // form-urlencoded + no-cors = simple request, never blocked by CORS
-      fetch(GHL_WEBHOOK_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload
-      }).then(done).catch(done);
-
-      if (REDIRECT_AFTER_SUBMIT) {
-        setTimeout(function () { window.location.href = THANK_YOU_URL; }, 4000);
+      if (typeof fbq === "function") {
+        try { fbq("track", "Lead"); } catch (err) {}
       }
+
+      sendToGHL(payload);
+
+      var btn = form.querySelector('[type="submit"], button');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Menghantar...";
+      }
+
+      // Short pause so the beacon leaves the browser before we navigate.
+      setTimeout(function () {
+        window.location.href = THANK_YOU_URL;
+      }, 700);
     });
   }
 
