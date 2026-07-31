@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  TAKAFUL.CARE — LANDING PAGE (Meta paid-ads traffic)
+  Offer: Perlindungan Percuma 100 Hari (generic / pain-point led)
+  UPLOAD TO:  perlindungan/legasi-100/index.html
+  LIVE URL :  https://takaful.care/perlindungan/legasi-100
+  BEFORE GOING LIVE — search for  >>> SWAP  (2 spots: licence no., Pixel ID)
+  Depends on /js/lead-capture.js?v=6
+  ============================================================================
+-->
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perlindungan Percuma 100 Hari — Pampasan Sehingga RM20,000 | Takaful.care</title>
+<meta name="description" content="Perlindungan kemalangan PERCUMA selama 100 hari. Pampasan sehingga RM20,000, termasuk semasa Haji/Umrah. Tiada bayaran, tiada komitmen. Daftar dalam 2 minit.">
+<link rel="canonical" href="https://takaful.care/perlindungan/legasi-100">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#1A3C5E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Perlindungan Percuma 100 Hari — Pampasan Sehingga RM20,000">
+<meta property="og:description" content="Perlindungan kemalangan PERCUMA selama 100 hari. Termasuk semasa Haji/Umrah. Tiada bayaran.">
+<meta property="og:image" content="https://takaful.care/images/misc/keluarga-muda-melayu-muslim-bersama-ejen-takaful-b.webp">
+<meta property="og:locale" content="ms_MY">
+<style>
+  :root{
+    --primary-500:#1A3C5E; --primary-700:#12293F; --primary-800:#0D1F2F;
+    --primary-100:#C8D6E3; --primary-200:#9DB3C7; --primary-50:#EBF4FA;
+    --secondary-500:#1D9E75; --secondary-600:#168666; --secondary-700:#0F6E56;
+    --secondary-100:#C4EBDD; --secondary-50:#E1F5EE;
+    --accent-500:#D9A441;
+    --surface:#F6F8FA; --border:#E3E8EF;
+    --text:#1F2A37; --text-muted:#5B6B7C;
+    --radius-card:12px; --radius-button:8px;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--text);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:78px;}
+  @media(min-width:1024px){ body{padding-bottom:0} }
+  .container{max-width:820px;margin:0 auto;padding:0 20px}
+  .container-wide{max-width:1120px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.2;font-weight:700;color:var(--primary-500)}
+  .hero-tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--secondary-700);background:var(--secondary-50);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .section-number{display:block;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);}
+  .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--secondary-500);color:#fff;font-weight:600;font-size:1.05rem;padding:15px 30px;border:0;border-radius:var(--radius-button);cursor:pointer;text-decoration:none;transition:background .18s ease;width:100%;font-family:var(--sans);}
+  @media(min-width:600px){ .btn-primary{width:auto} }
+  .btn-primary:hover{background:var(--secondary-600)}
+  .btn-primary:focus-visible{outline:3px solid var(--accent-500);outline-offset:3px}
+  .hero{background:#fff;padding:38px 0 44px}
+  .hero h1{font-size:clamp(1.85rem,5.6vw,3rem);margin-bottom:16px;max-width:20ch}
+  .hero h1 .free{color:var(--secondary-600)}
+  .hero .promise{font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;color:var(--primary-500);margin-bottom:14px;max-width:46ch;}
+  .hero .body{color:var(--text-muted);font-size:1.03rem;margin-bottom:22px;max-width:54ch}
+  .microtrust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-size:.92rem;color:var(--text-muted);}
+  .microtrust span{display:inline-flex;align-items:center;gap:7px}
+  .tick{width:17px;height:17px;flex:none;color:var(--secondary-500)}
+  .hero img{width:100%;max-width:620px;margin-top:30px;border-radius:var(--radius-card);border:1px solid var(--border);display:block;}
+  .trustbar{background:var(--primary-500);color:#fff;padding:16px 0}
+  .trustbar .row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 28px;font-size:.9rem;text-align:center;}
+  .trustbar .row span{display:inline-flex;align-items:center;gap:7px;color:var(--primary-100)}
+  .trustbar b{color:#fff;font-weight:600}
+  .trustbar .ico{width:18px;height:18px;color:var(--secondary-500);flex:none}
+  section.block{padding:52px 0}
+  section.surface{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .block h2{font-size:clamp(1.5rem,4.2vw,2.15rem);margin:8px 0 14px;max-width:24ch}
+  .block .lead{color:var(--text-muted);font-size:1.05rem;margin-bottom:26px;max-width:56ch}
+  .checklist{list-style:none;display:grid;gap:14px;max-width:640px}
+  .checklist li{display:flex;gap:12px;font-size:1.02rem}
+  .checklist .tick{width:21px;height:21px;margin-top:3px}
+  .cards{display:grid;gap:16px}
+  @media(min-width:760px){ .cards{grid-template-columns:repeat(3,1fr)} }
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);padding:24px 22px}
+  .card h3{font-size:1.1rem;margin-bottom:8px}
+  .card p{color:var(--text-muted);font-size:.98rem}
+  .tiers{display:grid;gap:16px;margin-top:8px}
+  @media(min-width:760px){ .tiers{grid-template-columns:repeat(3,1fr)} }
+  .tier{background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);padding:26px 22px;text-align:center;position:relative;}
+  .tier.lead-tier{border:2px solid var(--secondary-500)}
+  .tier .amt{font-size:clamp(1.7rem,4.5vw,2.1rem);font-weight:800;color:var(--secondary-700);line-height:1.1;margin-bottom:8px;letter-spacing:-.01em;}
+  .tier .amt small{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;letter-spacing:.08em;}
+  .tier p{color:var(--text-muted);font-size:.97rem}
+  .tier .flag{display:inline-block;background:var(--secondary-50);color:var(--secondary-700);font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:10px;}
+  .callout{background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent-500);border-radius:var(--radius-card);padding:26px 24px;}
+  .callout p{color:var(--text);font-size:1.05rem;max-width:58ch}
+  .callout strong{color:var(--primary-500)}
+  .formsec{background:var(--primary-500);padding:52px 0 58px}
+  .formcard{background:#fff;border-radius:var(--radius-card);max-width:540px;margin:0 auto;padding:32px 26px;box-shadow:0 20px 40px -22px rgba(0,0,0,.5);}
+  @media(min-width:600px){ .formcard{padding:38px 36px} }
+  .formcard h2{font-size:clamp(1.4rem,3.6vw,1.85rem);margin-bottom:8px}
+  .formcard .fdesc{color:var(--text-muted);margin-bottom:22px;font-size:.99rem}
+  .field{margin-bottom:15px}
+  .field label{display:block;font-weight:600;font-size:.93rem;margin-bottom:6px;color:var(--text)}
+  .field input,.field select{width:100%;padding:13px 13px;font-size:1rem;font-family:var(--sans);color:var(--text);border:1.5px solid var(--border);border-radius:var(--radius-button);background:#fff;}
+  .field input:focus,.field select:focus{outline:0;border-color:var(--secondary-500);box-shadow:0 0 0 3px rgba(29,158,117,.18);}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .formnote{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--text-muted);margin-top:15px}
+  .consent{font-size:.8rem;color:var(--text-muted);margin-top:13px;line-height:1.55}
+  #formError{color:#B42318;font-size:.9rem;margin-top:10px;display:none}
+  footer{background:var(--primary-800);color:var(--primary-200);padding:32px 0 38px;font-size:.84rem}
+  footer .container{display:grid;gap:12px}
+  footer .brand{color:#fff;font-weight:700;font-size:1.1rem}
+  footer .disc{max-width:72ch;line-height:1.6}
+  footer a{color:var(--primary-100)}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(18,41,63,.97);padding:10px 14px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px -10px rgba(0,0,0,.6);}
+  .sticky a{display:flex;align-items:center;justify-content:center;background:var(--secondary-500);color:#fff;font-weight:600;font-size:1.02rem;padding:14px;border-radius:var(--radius-button);text-decoration:none;}
+  @media(min-width:1024px){ .sticky{display:none} }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <span class="hero-tag">Ejen Takaful Bertauliah · Sungai Petani · Kedah &amp; Pulau Pinang</span>
+    <h1>Satu kemalangan boleh ubah segala-galanya. Mula lindungi keluarga anda — <span class="free">percuma</span>.</h1>
+    <p class="promise">Perlindungan kemalangan 100 hari, pampasan sehingga RM20,000. Termasuk semasa Haji &amp; Umrah.</p>
+    <p class="body">
+      Kemalangan tidak beri amaran. Sekali ia berlaku kepada penyumbang pendapatan, keluarga
+      terpaksa tanggung kos hospital dan kehilangan pendapatan serentak. Perlindungan ini beri
+      keluarga anda satu lapisan keselamatan — tanpa sebarang bayaran, tanpa komitmen.
+    </p>
+    <a class="btn-primary" href="#borang">Daftar Perlindungan Percuma Saya</a>
+    <div class="microtrust">
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Betul-betul percuma</span>
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tiada komitmen</span>
+      <span><svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Daftar dalam 2 minit</span>
+    </div>
+    <img src="/images/misc/keluarga-muda-melayu-muslim-bersama-ejen-takaful-b.webp"
+         alt="Keluarga muda Muslim yang dilindungi pelan perlindungan kemalangan percuma"
+         width="1200" height="800" loading="eager" fetchpriority="high">
+  </div>
+</header>
+
+<div class="trustbar">
+  <div class="container-wide">
+    <div class="row">
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Dikawal selia <b>Bank Negara Malaysia</b></span>
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Dilindungi <b>PIDM</b></span>
+      <span><svg class="ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 3v5c0 4.2-2.9 8.1-7 10-4.1-1.9-7-5.8-7-10V4l7-3z"/></svg>Ejen berlesen &mdash; lesen boleh disemak</span>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="container">
+    <span class="section-number">01 / Realitinya</span>
+    <h2>Bila kemalangan berlaku, bil datang dahulu — sebelum wang.</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Pendapatan terhenti serta-merta</h3>
+        <p>Jika penyumbang pendapatan cedera atau lebih teruk, gaji berhenti pada hari itu juga. Tapi ansuran rumah dan belanja dapur tidak berhenti.</p>
+      </div>
+      <div class="card">
+        <h3>Kos hospital tak tunggu</h3>
+        <p>Kemasukan hospital akibat kemalangan boleh mencecah ribuan ringgit — wang yang mungkin datang terus daripada simpanan keluarga.</p>
+      </div>
+      <div class="card">
+        <h3>Ramai fikir "nanti dulu"</h3>
+        <p>Perlindungan sering ditangguh sebab ingat ia mahal atau leceh. Kemalangan pula tidak menunggu anda bersedia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block surface">
+  <div class="container">
+    <span class="section-number">02 / Apa yang anda dapat</span>
+    <h2>Tiga lapisan perlindungan — tanpa sebarang caruman.</h2>
+    <p class="lead">Perlindungan bermula sebaik pendaftaran diluluskan dan kekal selama 100 hari:</p>
+    <div class="tiers">
+      <div class="tier lead-tier">
+        <div class="amt"><small>Sehingga</small>RM20,000</div>
+        <p>Kematian akibat kemalangan bagi peristiwa tertentu — <strong>termasuk semasa Haji &amp; Umrah</strong>.</p>
+        <span class="flag">Termasuk Haji / Umrah</span>
+      </div>
+      <div class="tier">
+        <div class="amt"><small>Sehingga</small>RM10,000</div>
+        <p>Kematian akibat kemalangan dalam keadaan umum.</p>
+      </div>
+      <div class="tier">
+        <div class="amt"><small>Sehingga</small>RM5,000</div>
+        <p>Kemasukan ke hospital akibat kemalangan.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:24px;margin-bottom:0;font-size:.95rem">
+      Amaun sebenar dan peristiwa yang layak tertakluk kepada terma perlindungan dan kelulusan.
+    </p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <span class="section-number">03 / Percuma?</span>
+    <h2>"Percuma" — biasanya ada tangkapan, kan?</h2>
+    <div class="callout">
+      <p>
+        <strong>Tiada bayaran, tiada kad kredit, tiada obligasi untuk membeli apa-apa.</strong>
+        Ini cara saya, sebagai ejen berlesen, memperkenalkan diri kepada keluarga di Kedah dan
+        Pulau Pinang. Selepas 100 hari, jika anda mahu teruskan dengan perlindungan yang lebih
+        menyeluruh, itu pilihan anda sepenuhnya — tanpa sebarang paksaan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="block surface">
+  <div class="container">
+    <span class="section-number">04 / Untuk siapa</span>
+    <h2>Sesuai untuk anda jika:</h2>
+    <ul class="checklist">
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda ketua keluarga atau penyumbang pendapatan yang ada orang bergantung pada anda.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda belum ada perlindungan kemalangan, atau tak pasti perlindungan sedia ada mencukupi.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda merancang untuk menunaikan Haji atau Umrah dan mahu perlindungan semasa di sana.</li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Anda mahu mula dengan sesuatu yang percuma sebelum memutuskan langkah seterusnya.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="formsec" id="borang">
+  <div class="container">
+    <div class="formcard">
+      <h2>Daftar perlindungan percuma anda</h2>
+      <p class="fdesc">Isi butiran ringkas di bawah. Saya akan hubungi anda melalui WhatsApp dalam masa 24 jam untuk lengkapkan pendaftaran percuma anda.</p>
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="nama">Nama penuh (seperti dalam MyKad)</label>
+          <input id="nama" name="nama" type="text" autocomplete="name" required placeholder="Cth: Ahmad bin Ismail">
+        </div>
+        <div class="field">
+          <label for="telefon">No. telefon (WhatsApp)</label>
+          <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Cth: 012-345 6789">
+        </div>
+        <div class="field">
+          <label for="emel">Emel</label>
+          <input id="emel" name="emel" type="email" autocomplete="email" required placeholder="nama@email.com">
+        </div>
+        <div class="field">
+          <label for="keperluan">Apa yang paling anda fikirkan sekarang?</label>
+          <select id="keperluan" name="keperluan" required>
+            <option value="" disabled selected>Pilih satu…</option>
+            <option value="Perlindungan kemalangan percuma">Nak perlindungan kemalangan percuma ini</option>
+            <option value="Perlindungan Haji/Umrah">Perlindungan semasa Haji / Umrah</option>
+            <option value="Nak tahu lebih lanjut">Nak faham dulu sebelum daftar</option>
+          </select>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label>Jangan isi ruang ini<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <input type="hidden" name="offer" value="legasi-100">
+        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%">Daftar Perlindungan Percuma Saya</button>
+        <p id="formError"></p>
+        <div class="formnote">
+          <svg class="tick" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Saya hubungi anda dalam masa 24 jam. Tiada bayaran diminta.
+        </div>
+        <p class="consent">
+          Dengan menghantar, anda bersetuju untuk dihubungi berkenaan pendaftaran perlindungan percuma ini.
+          Butiran anda tidak dikongsi dengan pihak ketiga. Pendaftaran tertakluk kepada kelulusan dan terma perlindungan.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">Takaful.care</div>
+    <!-- >>> SWAP #1 — your consultant licence number -->
+    <div>Alpian Ali · Ejen Takaful Bertauliah</div>
+    <div>Sungai Petani, Kedah · alpian@takaful.care</div>
+    <p class="disc">
+      Perlindungan percuma 100 hari ini menyediakan perlindungan kemalangan terhad untuk tempoh
+      tertentu sahaja dan bukan pelan perlindungan menyeluruh. Amaun pampasan, peristiwa yang layak,
+      syarat kelayakan dan tempoh perlindungan tertakluk sepenuhnya kepada terma rasmi dan kelulusan
+      pihak penyedia. Maklumat di halaman ini adalah panduan umum dan bukan nasihat kewangan peribadi.
+    </p>
+    <p><a href="/polisi-privasi/">Polisi Privasi</a> · <a href="/terma-perkhidmatan/">Terma Perkhidmatan</a></p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a href="#borang">Daftar Percuma — Sehingga RM20,000</a>
+</div>
+
+<!-- ================= META PIXEL ================= -->
+<script>
+/* >>> SWAP #2 — replace YOUR_PIXEL_ID with your Meta Pixel ID (same across all pages). */
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','YOUR_PIXEL_ID');
+fbq('track','PageView');
+</script>
+
+<script src="/js/lead-capture.js?v=6" defer></script>
+
+</body>
+</html>
