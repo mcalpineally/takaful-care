@@ -15,6 +15,15 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-706ZHY8NML"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-706ZHY8NML');
+  /* Lead reaches this page only after a successful form submit -> fire conversion event. */
+  gtag('event','generate_lead',{event_category:'lead',page_location:location.href});
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terima kasih, permohonan anda diterima | Takaful.care</title>
 <meta name="robots" content="noindex, nofollow">
