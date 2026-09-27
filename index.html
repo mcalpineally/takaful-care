@@ -4,6 +4,11 @@
 <a href="#main-content" class="skip-link">Langkau ke kandungan utama</a>
 
 <header id="site-header" class="sticky top-0 z-50 bg-white border-b border-brand-border shadow-sm">
+  <!-- Scoped hover CSS for the nested "Medical Card" flyout (self-contained; does not rely on the compiled Tailwind build) -->
+  <style>
+    #site-header .mc-sub{display:none;}
+    #site-header .mc-group:hover>.mc-sub{display:block;}
+  </style>
   <div class="editorial-container-wide">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="/" class="flex items-center gap-2 text-primary-500"><span class="font-bold text-lg lg:text-xl tracking-tight">Takaful.care</span></a>
@@ -20,11 +25,19 @@
               <a href="/perlindungan-hilang-upaya/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Perlindungan Hilang Upaya</a>
               <a href="/perlindungan-penyakit-kritikal/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Perlindungan Penyakit Kritikal</a>
               <a href="/perlindungan-ibu-hamil-bayi/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Perlindungan Ibu Hamil &amp; Bayi</a>
-              <div class="mt-1 pt-1 border-t border-brand-border">
-                <div class="px-4 pt-1 pb-1 text-xs font-semibold uppercase tracking-wider text-brand-text-muted">Medical Card</div>
-                <a href="/medical-card-takaful/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Individu</a>
-                <a href="#" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Pasangan <span class="text-xs font-normal text-brand-text-muted">· akan datang</span></a>
-                <a href="/medical-card-anak/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Anak</a>
+              <!-- Medical Card (nested sub-submenu, opens to the right on hover) -->
+              <div class="relative mc-group mt-1 pt-1 border-t border-brand-border">
+                <button type="button" class="flex items-center px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600" style="width:100%;justify-content:space-between;">
+                  <span>Medical Card</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                <div class="mc-sub absolute" style="left:100%;top:0;padding-left:0.5rem;">
+                  <div class="bg-white border border-brand-border rounded-card shadow-lg py-2 min-w-[240px]">
+                    <a href="/medical-card-takaful/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Individu</a>
+                    <a href="#" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Pasangan <span class="text-xs font-normal text-brand-text-muted">· akan datang</span></a>
+                    <a href="/medical-card-anak/" class="block px-4 py-2 text-sm font-medium text-brand-text hover:bg-brand-surface hover:text-secondary-600">Takaful Anak</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -96,10 +109,18 @@
           <a href="/perlindungan-hilang-upaya/" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Perlindungan Hilang Upaya</a>
           <a href="/perlindungan-penyakit-kritikal/" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Perlindungan Penyakit Kritikal</a>
           <a href="/perlindungan-ibu-hamil-bayi/" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Perlindungan Ibu Hamil &amp; Bayi</a>
-          <div class="px-3 pt-2 pb-1 text-xs font-semibold uppercase tracking-wider text-brand-text-muted">Medical Card</div>
-          <a href="/medical-card-takaful/" class="block py-2 px-3 pl-6 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Individu</a>
-          <a href="#" class="block py-2 px-3 pl-6 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Pasangan · akan datang</a>
-          <a href="/medical-card-anak/" class="block py-2 px-3 pl-6 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Anak</a>
+          <!-- Medical Card (nested accordion) -->
+          <div>
+            <div class="flex items-center">
+              <span class="flex-1 py-2 px-3 text-sm font-medium text-brand-text">Medical Card</span>
+              <button type="button" class="mobile-submenu-toggle p-2 text-brand-text hover:bg-brand-surface rounded-button" aria-expanded="false" aria-controls="mobile-submenu-4" aria-label="Togol submenu Medical Card"><svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+            </div>
+            <div id="mobile-submenu-4" class="hidden pl-4 mt-1 space-y-1">
+              <a href="/medical-card-takaful/" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Individu</a>
+              <a href="#" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Pasangan · akan datang</a>
+              <a href="/medical-card-anak/" class="block py-2 px-3 text-sm text-brand-text-muted hover:bg-brand-surface rounded-button">Takaful Anak</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -149,6 +170,7 @@
     </div>
   </nav>
 </header>
+
 
 
 <main id="main-content" tabindex="-1" class="flex-1 overflow-x-hidden">
